@@ -1,0 +1,93 @@
+{% extends "client_base.html" %}
+{% block title %}Dashboard - {{ c.client }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .tier-card {
+        background: linear-gradient(180deg, #fff 0%, #fffaf6 100%);
+        border: 1px solid var(--line-strong); border-radius: 16px;
+        padding: 20px 22px; box-shadow: var(--shadow); margin-bottom: 22px;
+    }
+    .tier-card .tier-pill {
+        display: inline-block; padding: 5px 14px; border-radius: 999px;
+        font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .tier-pill.fully_automated { background: #e9f6ea; color: #1b5e20; }
+    .tier-pill.semi_automated  { background: #fff4e5; color: #b45309; }
+    .tier-pill.manual          { background: #f0eeec; color: #6d6259; }
+    .tier-card p { font-size: 13px; color: #6b584c; line-height: 1.6; margin: 12px 0 0; }
+    .acct-tbl { width: 100%; border-collapse: collapse; }
+    .acct-tbl th {
+        text-align: left; font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+        letter-spacing: .4px; color: var(--ink-soft); padding: 8px 12px 8px 0;
+        width: 34%; white-space: nowrap; vertical-align: top;
+    }
+    .acct-tbl td { font-size: 12.5px; color: var(--ink); padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .acct-tbl td.empty { color: #bcaa9d; }
+    .money { font-variant-numeric: tabular-nums; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="client-head">
+    <h2>{{ c.client }}</h2>
+    <p>Your chargebacks, how they are being defended, and the account behind them.</p>
+    <span class="scope-note">&#128274; You are seeing only your own brand's cases</span>
+</div>
+
+<div class="kpi-strip">
+    <div class="kpi"><div class="v">{{ c.totals.cases }}</div><div class="l">Your Cases</div></div>
+    <div class="kpi"><div class="v">{{ c.totals.outstanding }}</div><div class="l">Awaiting Decision</div></div>
+    <div class="kpi"><div class="v">{{ c.totals.submitted }}</div><div class="l">Sent to Network</div></div>
+    <div class="kpi"><div class="v">{{ c.totals.won }}</div><div class="l">Won</div></div>
+    <div class="kpi"><div class="v">{{ c.totals.lost }}</div><div class="l">Lost</div></div>
+</div>
+
+{# The tier is the client's own contract, so say what it means for them rather
+   than repeating the internal wording used on the manager console. #}
+<div class="tier-card">
+    <span class="tier-pill {{ c.tier }}">{{ c.tier_label }}</span>
+    <p>{{ c.tier_blurb }}</p>
+    <p>
+        {% if c.tier == 'fully_automated' %}
+        Your evidence is assembled from the records you already send us, and your
+        representment packets are built and filed without needing anything from you.
+        {% elif c.tier == 'manual' %}
+        We have no API access to your systems, so we will ask you for the
+        supporting documents on each case &mdash; invoices, order forms and
+        checkout records &mdash; before a packet can be filed.
+        {% else %}
+        We assemble what your records cover and come back to you only for the
+        pieces we cannot reach.
+        {% endif %}
+    </p>
+</div>
+
+<div class="panel">
+    <div class="panel-head">
+        <div><h3>Value</h3><div class="sub">Across every case in your book.</div></div>
+    </div>
+    <table class="acct-tbl">
+        <tr><th>Total disputed</th><td class="money">{{ "%.2f"|format(c.totals.value) }}</td></tr>
+        <tr><th>Still at risk</th><td class="money">{{ "%.2f"|format(c.totals.at_risk) }}</td></tr>
+        <tr><th>Refunded</th><td>{{ c.totals.refunded }} case{{ '' if c.totals.refunded == 1 else 's' }}</td></tr>
+    </table>
+</div>
+
+<div class="panel">
+    <div class="panel-head">
+        <div><h3>Merchant Account</h3><div class="sub">On file with us. Ask your account manager to change anything here.</div></div>
+    </div>
+    <table class="acct-tbl">
+        {% for key, label in c.account_fields.items() %}
+        <tr>
+            <th>{{ label }}</th>
+            {% if c.account.get(key) %}
+            <td>{% if key == 'status' %}<span class="pill {{ 'ok' if c.account[key] == 'Active' else 'wait' }}">{{ c.account[key] }}</span>
+                {% else %}{{ c.account[key] }}{% endif %}</td>
+            {% else %}<td class="empty">&mdash;</td>{% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

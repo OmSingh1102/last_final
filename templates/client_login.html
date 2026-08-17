@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login - ChargeShield AI</title>
+    <!-- Linked for the :root design tokens (--brand, --page-bg, --shadow, …) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #fff1e6 0%, #fdf8f4 55%, #fdf8f4 100%);
+        }
+
+        .portal-card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border: 1px solid var(--line, #f2e4da);
+            border-left: 5px solid var(--brand-deep, #9a3412);
+            border-radius: 16px;
+            box-shadow: 0 6px 26px rgba(146, 64, 14, .12);
+            padding: 34px 36px;
+            text-align: center;
+        }
+
+        .portal-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; text-align: left; }
+        .portal-brand .brand-mark { width: 46px; height: 46px; }
+        .portal-brand h1 { font-size: 21px; font-weight: 700; color: var(--ink, #2b1b12); line-height: 1.2; }
+        .portal-brand .brand-sub { font-size: 12.5px; color: var(--ink-soft, #8a7365); font-weight: 500; }
+
+        .login-error {
+            display: flex; align-items: center; gap: 8px;
+            background: #ffe9e6; color: #c62828;
+            border: 1px solid #f5b8b2; border-radius: 10px;
+            padding: 10px 14px; font-size: 13px; font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .field { margin-bottom: 16px; text-align: left; }
+        .field label {
+            display: block; font-size: 12px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: .4px;
+            color: var(--ink-soft, #8a7365); margin-bottom: 6px;
+        }
+        .field input {
+            width: 100%; padding: 11px 14px; font-size: 14px;
+            font-family: inherit; color: var(--ink, #2b1b12);
+            border: 1px solid var(--line-strong, #fbd9c4); border-radius: 10px;
+            background: #fffbf8;
+        }
+        .field input:focus {
+            outline: none; border-color: var(--brand, #f4611a);
+            box-shadow: 0 0 0 3px rgba(244, 97, 26, .14);
+        }
+        .login-btn {
+            width: 100%; margin-top: 6px; padding: 12px;
+            background: var(--brand, #f4611a); color: #fff;
+            border: none; border-radius: 10px;
+            font-size: 15px; font-weight: 700; font-family: inherit;
+            cursor: pointer; transition: background .2s;
+            box-shadow: 0 3px 12px rgba(244, 97, 26, .28);
+        }
+        .login-btn:hover { background: var(--brand-dark, #c2410c); }
+        .login-hint {
+            margin-top: 20px; padding: 12px 14px; text-align: left;
+            background: #fff7f2; border: 1px dashed var(--line-strong, #fbd9c4);
+            border-radius: 10px; font-size: 12.5px; color: #7a6558;
+        }
+        .login-hint code { font-weight: 700; color: var(--brand-dark, #c2410c); }
+        .cl-icon { font-size: 40px; line-height: 1; margin-bottom: 14px; }
+        .cl-title { font-size: 17px; font-weight: 800; color: var(--ink, #2b1b12); margin-bottom: 8px; }
+        .cl-body {
+            font-size: 13.5px;
+            color: var(--ink-soft, #8a7365);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .cl-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px;
+            background: var(--brand, #f4611a);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 3px 12px rgba(244, 97, 26, .28);
+            transition: background .2s;
+        }
+        .cl-back:hover { background: var(--brand-dark, #c2410c); color: #fff; text-decoration: none; }
+
+        .portal-logo img { height: 28px; width: auto; display: block; opacity: .9; }
+    </style>
+</head>
+<body>
+    <div class="portal-card">
+        <div class="portal-brand">
+            <span class="brand-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 1.5 3.5 5.2v6.4c0 5.2 3.6 10 8.5 11.4 4.9-1.4 8.5-6.2 8.5-11.4V5.2L12 1.5Zm-1.3 15.1-4-4 1.6-1.6 2.4 2.4 5.4-5.4 1.6 1.6-7 7Z"/>
+                </svg>
+            </span>
+            <div>
+                <h1>ChargeShield AI</h1>
+                <div class="brand-sub">Chargeback Defense Platform</div>
+            </div>
+        </div>
+
+        <div class="cl-icon">&#127970;</div>
+        <div class="cl-title">Client sign-in</div>
+        <div class="cl-body">
+            Sign in to your own brand's disputes. You will see your cases, their
+            outcomes and your account record &mdash; nothing from any other client.
+        </div>
+
+        {% if error %}
+        <div class="login-error">&#9888; {{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('client_login') }}">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ username }}"
+                       autocomplete="username" autofocus required>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="login-btn">Sign in</button>
+        </form>
+
+        {% if demo_users %}
+        <div class="login-hint">
+            <div style="font-weight:700; margin-bottom:6px;">Demo credentials</div>
+            {% for name, rec in demo_users %}
+            <div><code>{{ name }}</code> / <code>{{ rec.password }}</code></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <a class="cl-back" href="{{ url_for('portal') }}">&larr; Back to sign-in options</a>
+    </div>
+
+    <div class="portal-logo">
+        <img src="{{ url_for('static', filename='img/straive-logo.svg') }}" alt="Straive">
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "manager_base.html" %}
+{% block title %}System Settings - Management Console{% endblock %}
+
+{% block extra_css %}
+<style>
+    .set-list { max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
+    .set-row {
+        display: flex; justify-content: space-between; align-items: center; gap: 18px;
+        background: #fff; border: 1px solid var(--line); border-radius: 14px;
+        padding: 17px 20px; box-shadow: var(--shadow);
+    }
+    .set-row .t { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .set-row .d { font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+    .set-row .val { font-size: 13px; font-weight: 700; color: var(--brand-dark); white-space: nowrap; }
+    .set-row .pill { white-space: nowrap; }
+    h3.sec { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-soft); margin: 26px 0 10px; }
+    h3.sec:first-of-type { margin-top: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="mgr-head">
+    <h2>System Settings</h2>
+    <p>Platform configuration and the accounts that can reach it.</p>
+    <span class="scope-note">&#9881; Management only</span>
+</div>
+
+<div class="set-list">
+    <h3 class="sec">Data</h3>
+    <div class="set-row">
+        <div><div class="t">Loaded case book</div><div class="d">{{ m.sources.automated }} automated &middot; {{ m.sources.manual }} manually ingested</div></div>
+        <span class="val">{{ m.sources.total }} cases</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Upload behaviour</div><div class="d">An ingested sheet tops up the book; matching case IDs update in place.</div></div>
+        <span class="val">Merge</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Startup dataset</div><div class="d">Loaded automatically at boot.</div></div>
+        <span class="val">{{ m.totals.cases }} rows</span>
+    </div>
+
+    <h3 class="sec">Team</h3>
+    <div class="set-row">
+        <div><div class="t">Team leads</div><div class="d">{{ m.team_leads|join(', ') }}</div></div>
+        <span class="val">{{ m.team_leads|length }}</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Agents</div><div class="d">Assigned across leads on the Onboarding page.</div></div>
+        <span class="val">{{ m.filters.agents|length }}</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Daily target per agent</div><div class="d">Cases each agent is measured against.</div></div>
+        <span class="val">60 / day</span>
+    </div>
+
+    <h3 class="sec">Not yet built</h3>
+    <div class="set-row">
+        <div><div class="t">User management</div><div class="d">Accounts are a fixed table in <code>app.py</code>; there is no user store to add or disable people in.</div></div>
+        <span class="pill wait">Not built</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Authentication</div><div class="d">Passwords are plaintext and the session key is a dev constant. This is a demo gate, not a security control.</div></div>
+        <span class="pill bad">Demo only</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Third-party credentials</div><div class="d">No PSP portal logins are stored &mdash; they need a real secret store.</div></div>
+        <span class="pill wait">Not built</span>
+    </div>
+    <div class="set-row">
+        <div><div class="t">Notifications &amp; SLA alerts</div><div class="d">No scheduler or delivery channel exists yet.</div></div>
+        <span class="pill wait">Not built</span>
+    </div>
+</div>
+
+<div class="stub-note" style="max-width:760px;">
+    <b>Read-only for now.</b> These reflect how the platform is actually configured rather than
+    offering controls that would not persist. Tell me which of them you want to become editable and
+    what should back them, and I will wire those up.
+</div>
+{% endblock %}

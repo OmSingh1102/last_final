@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 318 84" role="img" aria-label="Straive">
+  <title>Straive</title>
+  <defs>
+    <!-- Clip used to tint the region where the two bars cross -->
+    <clipPath id="sv-barA">
+      <rect x="18" y="16.5" width="52" height="19" rx="9.5" transform="rotate(-38 44 26)"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Mark: two slanted rounded bars with a lighter overlap ── -->
+  <g>
+    <rect x="18" y="16.5" width="52" height="19" rx="9.5" fill="#FF5A1E" transform="rotate(-38 44 26)"/>
+    <rect x="7.7" y="42.3" width="52" height="19" rx="9.5" fill="#FF5A1E" transform="rotate(-38 33.7 51.8)"/>
+    <g clip-path="url(#sv-barA)">
+      <rect x="7.7" y="42.3" width="52" height="19" rx="9.5" fill="#FF9257" transform="rotate(-38 33.7 51.8)"/>
+    </g>
+  </g>
+
+  <!-- ── Wordmark: Str + [ai] + ve ──
+       textLength/lengthAdjust pin the layout so it renders identically
+       regardless of which fallback font the browser picks. -->
+  <g font-family="'Segoe UI','Trebuchet MS',system-ui,sans-serif" font-weight="800" font-size="56">
+    <text x="98" y="60" fill="#FF5A1E" textLength="78" lengthAdjust="spacingAndGlyphs">Str</text>
+    <rect x="182" y="16" width="62" height="50" rx="12" fill="#FF5A1E"/>
+    <text x="213" y="59" fill="#FFFFFF" text-anchor="middle" textLength="46" lengthAdjust="spacingAndGlyphs">ai</text>
+    <text x="252" y="60" fill="#FF5A1E" textLength="54" lengthAdjust="spacingAndGlyphs">ve</text>
+  </g>
+</svg>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Credentials - ChargeShield AI</title>
+    <!-- Linked for the :root design tokens (--brand, --page-bg, --shadow, …) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #fff1e6 0%, #fdf8f4 55%, #fdf8f4 100%);
+        }
+
+        .portal-card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border: 1px solid var(--line, #f2e4da);
+            border-left: 5px solid var(--brand, #f4611a);
+            border-radius: 16px;
+            box-shadow: 0 6px 26px rgba(146, 64, 14, .12);
+            padding: 34px 36px;
+        }
+
+        .portal-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+        .portal-brand .brand-mark { width: 46px; height: 46px; }
+        .portal-brand h1 { font-size: 21px; font-weight: 700; color: var(--ink, #2b1b12); line-height: 1.2; }
+        .portal-brand .brand-sub { font-size: 12.5px; color: var(--ink-soft, #8a7365); font-weight: 500; }
+
+        .portal-title {
+            text-align: center;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--ink, #2b1b12);
+            padding: 12px 18px;
+            background: var(--brand-tint, #ffeadd);
+            border: 1px solid var(--line-strong, #fbd9c4);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .portal-lead {
+            text-align: center;
+            font-size: 13px;
+            color: var(--ink-soft, #8a7365);
+            margin-bottom: 24px;
+        }
+
+        .portal-options { display: flex; flex-direction: column; gap: 12px; }
+
+        .portal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+            text-decoration: none;
+            transition: all .2s;
+        }
+        .portal-btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+        .portal-btn.primary {
+            background: var(--brand, #f4611a);
+            color: #fff;
+            border: 1px solid var(--brand, #f4611a);
+            box-shadow: 0 3px 12px rgba(244, 97, 26, .28);
+        }
+        .portal-btn.primary:hover { background: var(--brand-dark, #c2410c); color: #fff; }
+
+        .portal-btn.secondary {
+            background: #fffbf8;
+            color: var(--brand-dark, #c2410c);
+            border: 1px solid var(--line-strong, #fbd9c4);
+        }
+        .portal-btn.secondary:hover { border-color: var(--brand, #f4611a); background: #fff7f2; }
+
+        .portal-note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--line-strong, #fbd9c4);
+            font-size: 12px;
+            color: #8a7365;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .portal-logo img { height: 28px; width: auto; display: block; opacity: .9; }
+    </style>
+</head>
+<body>
+    <div class="portal-card">
+        <div class="portal-brand">
+            <span class="brand-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 1.5 3.5 5.2v6.4c0 5.2 3.6 10 8.5 11.4 4.9-1.4 8.5-6.2 8.5-11.4V5.2L12 1.5Zm-1.3 15.1-4-4 1.6-1.6 2.4 2.4 5.4-5.4 1.6 1.6-7 7Z"/>
+                </svg>
+            </span>
+            <div>
+                <h1>ChargeShield AI</h1>
+                <div class="brand-sub">Chargeback Defense Platform</div>
+            </div>
+        </div>
+
+        <div class="portal-title">Login Credentials</div>
+        <div class="portal-lead">Choose how you want to sign in</div>
+
+        <div class="portal-options">
+            <a href="{{ url_for('login') }}" class="portal-btn primary">&#128274; Straive</a>
+            <a href="{{ url_for('client_login') }}" class="portal-btn secondary">&#127970; Client Login</a>
+        </div>
+
+        <div class="portal-note">
+            Straive sign-in covers all internal profiles. Your role is read from your
+            credentials and decides which page you land on.
+        </div>
+    </div>
+
+    <div class="portal-logo">
+        <img src="{{ url_for('static', filename='img/straive-logo.svg') }}" alt="Straive">
+    </div>
+</body>
+</html>

@@ -1,0 +1,642 @@
+{% extends "manager_base.html" %}
+{% block title %}Manager Hub - ChargeShield AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ─── High-level statistics banner ─── */
+    .stat-banner {
+        display: flex; gap: 26px; flex-wrap: wrap; align-items: center;
+        background: linear-gradient(135deg, #fff 0%, #fff4ec 100%);
+        border: 1px solid var(--line-strong); border-radius: 20px;
+        padding: 22px 26px; box-shadow: var(--shadow); margin-bottom: 26px;
+    }
+    .sb-main { min-width: 250px; flex: 1; }
+    .sb-total { font-size: 46px; font-weight: 800; color: var(--brand-dark); line-height: 1; }
+    .sb-cap { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; color: var(--ink-soft); margin-top: 4px; }
+    .sb-split { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0 8px; font-size: 12px; color: var(--ink); font-weight: 600; }
+    .sb-split span { display: flex; align-items: center; gap: 6px; }
+    .sb-split i, .sb-bar i { display: inline-block; border-radius: 3px; }
+    .sb-split i { width: 10px; height: 10px; }
+    .sb-bar { display: flex; height: 9px; border-radius: 5px; overflow: hidden; background: #f3e6db; }
+    .sb-bar i { height: 100%; border-radius: 0; }
+    i.auto { background: #1a4f8a; }
+    i.man { background: var(--brand); }
+    .sb-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: 16px; flex: 2; min-width: 300px; }
+    .sb-stats div { text-align: center; }
+    .sb-stats b { display: block; font-size: 21px; font-weight: 800; color: var(--ink); line-height: 1.1; }
+    .sb-stats span { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--ink-soft); }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; border-top: 3px solid #ddd; }
+    .kpi-card .kpi-val { font-size: 30px; font-weight: 800; line-height: 1.1; margin-bottom: 4px; }
+    .kpi-card .kpi-lbl { font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+    .kpi-card.blue { border-top-color: #f4611a; }
+    .kpi-card.blue .kpi-val { color: #f4611a; }
+    .kpi-card.green { border-top-color: #2e7d32; }
+    .kpi-card.green .kpi-val { color: #2e7d32; }
+    .kpi-card.purple { border-top-color: #b45309; }
+    .kpi-card.purple .kpi-val { color: #b45309; }
+    .kpi-card.orange { border-top-color: #e65100; }
+    .kpi-card.orange .kpi-val { color: #e65100; }
+    .kpi-card.red { border-top-color: #c62828; }
+    .kpi-card.red .kpi-val { color: #c62828; }
+
+    .mgr-section { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+    .mgr-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+
+    .mgr-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+    /* Donut chart (CSS only) */
+    .donut-container { display: flex; align-items: center; gap: 30px; }
+    .donut { width: 160px; height: 160px; border-radius: 50%; position: relative; flex-shrink: 0; }
+    .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .donut-center .dc-val { font-size: 24px; font-weight: 800; }
+    .donut-center .dc-lbl { font-size: 10px; color: #888; }
+    .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+    .donut-legend .dl-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .donut-legend .dl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Chart shell ── */
+    .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; align-items: start; }
+    @media (max-width: 1100px) { .chart-grid-2 { grid-template-columns: 1fr; } }
+    .chart-card { background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #f2e4da; box-shadow: 0 2px 14px rgba(146,64,14,.07); }
+    .chart-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .chart-sub { font-size: 12px; color: #8a7365; margin-bottom: 20px; }
+    .chart-note { font-size: 11px; color: #a89383; margin-top: 12px; }
+
+    /* ── Pie / donut (CSS conic-gradient) ── */
+    .pie-wrap { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .pie { width: 168px; height: 168px; border-radius: 50%; flex-shrink: 0; position: relative; }
+    .pie.hole::after { content: ''; position: absolute; inset: 27%; background: #fff; border-radius: 50%; }
+    .pie-hole-txt { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; }
+    .pie-hole-txt .ph-v { font-size: 23px; font-weight: 800; line-height: 1; }
+    .pie-hole-txt .ph-l { font-size: 10px; color: #8a7365; text-transform: uppercase; letter-spacing: .4px; }
+    .pie-legend { display: flex; flex-direction: column; gap: 9px; min-width: 170px; }
+    .pl-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .pl-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+    .pl-name { flex: 1; }
+    .pl-val { font-weight: 700; }
+
+    /* ── 100% stacked columns ── */
+    .stack-chart { display: flex; align-items: flex-end; gap: 20px; height: 240px; }
+    .stack-col { flex: 1; display: flex; flex-direction: column; height: 100%; min-width: 0; }
+    .stack-total { font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 5px; color: #7a6558; }
+    .stack-bar { flex: 1; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; background: #f7efe9; }
+    .stack-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; overflow: hidden; min-height: 0; }
+    .stack-label { font-size: 12px; text-align: center; margin-top: 9px; font-weight: 600; color: #7a6558; }
+    /* A status with no cases gets a baseline strip, not a full-height empty box. */
+    .stack-empty { margin-top: auto; height: 4px; border-radius: 3px; background: #f0e2d7; text-indent: -9999px; overflow: hidden; }
+
+    /* ── Plain vertical bars (CB type) ── */
+    .bar-chart { display: flex; align-items: flex-end; gap: 26px; height: 210px; padding: 0 6px; }
+    .bar-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+    .bar-val { font-size: 12px; font-weight: 700; color: #7a6558; margin-bottom: 5px; }
+    .bar-fill { width: 100%; max-width: 76px; background: #f4611a; border-radius: 7px 7px 0 0; min-height: 3px; }
+    .bar-fill.muted { background: #d6bfae; }
+    .bar-label { font-size: 11.5px; text-align: center; margin-top: 9px; color: #7a6558; line-height: 1.35; }
+
+    /* ── Grouped columns (regions x network) ── */
+    .grp-chart { display: flex; align-items: flex-end; gap: 22px; height: 230px; overflow-x: auto; padding-bottom: 2px; }
+    .grp-set { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; min-width: 128px; flex: 1; }
+    .grp-bars { display: flex; align-items: flex-end; gap: 5px; height: 100%; }
+    .grp-bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+    .grp-fill { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; }
+    .grp-n { font-size: 10px; font-weight: 700; color: #7a6558; margin-bottom: 3px; }
+    .grp-label { font-size: 11.5px; text-align: center; margin-top: 9px; font-weight: 600; color: #7a6558; }
+    .grp-label .sub { display: block; font-weight: 400; font-size: 10.5px; color: #a89383; }
+
+    /* ── Horizontal bars (reason codes) ── */
+    .hbar-list { display: flex; flex-direction: column; gap: 11px; }
+    .hbar { display: grid; grid-template-columns: 1fr 46px; gap: 10px; align-items: center; }
+    .hbar-name { font-size: 11.5px; color: #6b584c; line-height: 1.3; margin-bottom: 4px; }
+    .hbar-name code { font-family: monospace; font-weight: 700; color: #2e1f17; }
+    .hbar-track { height: 13px; background: #f7efe9; border-radius: 4px; overflow: hidden; }
+    .hbar-fill { height: 100%; border-radius: 4px; min-width: 2px; }
+    .hbar-val { font-size: 12px; font-weight: 700; text-align: right; color: #7a6558; }
+
+    /* Amount cells: one line per currency, never summed across them. */
+    .cur-list { display: flex; flex-direction: column; gap: 2px; align-items: flex-end; }
+    .cur-list span { font-size: 12px; white-space: nowrap; }
+    .cur-list .cur-code { color: #a89383; font-size: 10.5px; font-weight: 700; margin-right: 4px; }
+
+    .sim-note { display: inline-flex; align-items: center; gap: 6px; background: #fff3e0; color: #b45309;
+                border: 1px solid #ffd8a8; padding: 5px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 600; }
+
+    /* ── Volume trend ── */
+    .trend-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+    .seg-btn { padding: 6px 15px; border: 1px solid #fbd9c4; background: #fff; border-radius: 8px; font-size: 12.5px; font-weight: 600; color: #7a5c49; cursor: pointer; }
+    .seg-btn.on { background: #f4611a; border-color: #f4611a; color: #fff; }
+    .trend-scroll { overflow-x: auto; padding-bottom: 4px; }
+    .tr-chart { display: flex; align-items: flex-end; gap: 8px; height: 250px; min-width: 100%; }
+    .tr-col { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; min-width: 34px; flex: 1; height: 100%; }
+    .tr-val { font-size: 10px; font-weight: 700; color: #7a6558; margin-bottom: 3px; }
+    .tr-stack { width: 100%; max-width: 42px; display: flex; flex-direction: column-reverse; border-radius: 5px 5px 0 0; overflow: hidden; }
+    .tr-seg { width: 100%; }
+    .tr-label { font-size: 10px; color: #8a7365; margin-top: 10px; white-space: nowrap; transform: rotate(-40deg); transform-origin: top center; height: 34px; }
+    .tr-empty { padding: 40px; text-align: center; color: #a89383; font-size: 13px; }
+
+    /* RC table */
+    .rc-tbl { width: 100%; border-collapse: collapse; }
+    .rc-tbl thead th { background: #fdf9f6; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; text-align: left; border-bottom: 2px solid #e8e8e8; }
+    .rc-tbl tbody td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+    .rc-tbl tbody tr:hover { background: #fff7f2; }
+    .wr-bar { display: flex; align-items: center; gap: 6px; }
+    .wr-track { width: 60px; height: 7px; background: #eee; border-radius: 4px; overflow: hidden; }
+    .wr-fill { height: 100%; border-radius: 4px; }
+    .wr-val { font-size: 12px; font-weight: 700; min-width: 32px; }
+
+    /* Manager tabs */
+    .mgr-table-wrap { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 20px; margin-bottom: 28px; }
+
+    /* How the pipeline handled a case */
+    .handling { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+    .handling::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .handling.auto { background: #e8f5e9; color: #2e7d32; }
+    .handling.hitl { background: #ffeadd; color: #c2410c; }
+    .handling.accepted { background: #f2ede9; color: #7a6558; }
+
+    .handling-tally { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
+
+    .mgr-tbl { width: 100%; border-collapse: collapse; }
+    .mgr-tbl thead th { background: #fdf9f6; padding: 12px 14px; font-size: 12px; font-weight: 700; color: #555; text-align: left; border-bottom: 2px solid #e8e8e8; }
+    .mgr-tbl tbody td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+    .mgr-tbl tbody tr:hover { background: #fff7f2; }
+    .mgr-tbl tbody tr:nth-child(even) { background: #fff5f5; }
+
+    .sla-badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+    .sla-badge.ok { background: #e8f5e9; color: #2e7d32; }
+    .sla-badge.warn { background: #fff3e0; color: #e65100; }
+    .sla-badge.overdue { background: #fce4ec; color: #c62828; }
+
+    .status-tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+    .status-tag.lost { background: #fce4ec; color: #c62828; }
+    .status-tag.qa-approved { background: #e8f5e9; color: #2e7d32; }
+    .status-tag.pending-refund { background: #fff3e0; color: #e65100; }
+    .status-tag.pending-review { background: #ffeadd; color: #f4611a; }
+
+    .goto-btn { display: inline-block; padding: 6px 14px; background: #fff; border: 1px solid #f4611a; color: #f4611a; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .goto-btn:hover { background: #f4611a; color: #fff; text-decoration: none; }
+
+    .filter-row { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .filter-row label { font-size: 12px; font-weight: 600; color: #888; }
+    .filter-row select { padding: 6px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="mgr-head">
+    <h2>Data Dashboard</h2>
+    <p>Every internal case, however it arrived, with the aggregate picture across the book.</p>
+    <span class="scope-note">&#128200; {{ m.sources.total }} cases &mdash; {{ m.sources.automated }} automated, {{ m.sources.manual }} manually ingested</span>
+</div>
+
+{# High-level statistics banner: volume first, then the macro rates. #}
+<div class="stat-banner">
+    <div class="sb-main">
+        <div class="sb-total">{{ m.sources.total }}</div>
+        <div class="sb-cap">Total Case Volume</div>
+        <div class="sb-split">
+            <span><i class="auto"></i>{{ m.sources.automated }} automated &middot; {{ m.sources.automated_pct }}%</span>
+            <span><i class="man"></i>{{ m.sources.manual }} manual &middot; {{ m.sources.manual_pct }}%</span>
+        </div>
+        <div class="sb-bar">
+            <i class="auto" style="width:{{ m.sources.automated_pct }}%"></i>
+            <i class="man" style="width:{{ m.sources.manual_pct }}%"></i>
+        </div>
+    </div>
+    <div class="sb-stats">
+        <div><b>{{ a.kpis.avg_resolution_days }}d</b><span>Avg Resolution</span></div>
+        <div><b>{{ a.kpis.auto_represent_rate }}%</b><span>Auto-Represent</span></div>
+        <div><b>{{ a.kpis.avg_completeness }}%</b><span>Evidence Complete</span></div>
+        <div><b>{{ m.totals.processors }}</b><span>Processors</span></div>
+        <div><b>{{ m.totals.networks }}</b><span>Networks</span></div>
+    </div>
+</div>
+
+
+{% if ch.has_data %}
+
+{# Amounts are per-currency dicts, never one summed figure — the book runs in
+   several currencies and adding them would produce a meaningless number. #}
+{% macro money(amounts) %}
+<div class="cur-list">
+    {% for cur, val in amounts.items() %}
+    <span><span class="cur-code">{{ cur }}</span>{{ "{:,.2f}".format(val) }}</span>
+    {% else %}
+    <span style="color:#a89383;">&mdash;</span>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+<!-- ═══ 1. Card Network / Processor Breakdown ═══ -->
+<div class="chart-grid-2">
+    <div class="chart-card">
+        <h3>&#128179; Chargebacks by Card Network</h3>
+        <div class="chart-sub">Share of the {{ ch.total }} open chargebacks, by network</div>
+        <div class="pie-wrap">
+            <div class="pie hole" style="background: conic-gradient({% for r in ch.breakdown.network_rows %}{{ r.color }} {{ r.start_deg }}deg {{ r.end_deg }}deg{{ ', ' if not loop.last }}{% endfor %});">
+                <div class="pie-hole-txt">
+                    <span class="ph-v">{{ ch.total }}</span>
+                    <span class="ph-l">Cases</span>
+                </div>
+            </div>
+            <div class="pie-legend">
+                {% for r in ch.breakdown.network_rows %}
+                <div class="pl-item">
+                    <span class="pl-dot" style="background:{{ r.color }};"></span>
+                    <span class="pl-name">{{ r.name }}</span>
+                    <span class="pl-val">{{ r.pct }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <table class="rc-tbl" style="margin-top:18px;">
+            <thead>
+                <tr><th>Labels</th>{% for r in ch.breakdown.network_rows %}<th style="text-align:right;">{{ r.name }}</th>{% endfor %}</tr>
+            </thead>
+            <tbody>
+                <tr><td style="font-weight:700;">CB Count</td>{% for r in ch.breakdown.network_rows %}<td style="text-align:right;">{{ r.count }}</td>{% endfor %}</tr>
+                <tr><td style="font-weight:700;">CB Amount</td>{% for r in ch.breakdown.network_rows %}<td style="text-align:right;">{{ money(r.amounts) }}</td>{% endfor %}</tr>
+            </tbody>
+        </table>
+        <div class="chart-note">Amounts are listed per currency &mdash; the book runs in {{ ch.currencies|join(', ') }}, so they are never added together.</div>
+    </div>
+
+    <div class="chart-card">
+        <h3>&#127974; Processor vs Card Network</h3>
+        <div class="chart-sub">Network mix within each payment processor</div>
+        <div class="stack-chart">
+            {% for p in ch.breakdown.processor_rows %}
+            <div class="stack-col">
+                <div class="stack-total">{{ p.count }}</div>
+                <div class="stack-bar">
+                    {% for m in p.mix %}
+                    <div class="stack-seg" style="height:{{ m.pct }}%; background:{{ m.color }};" title="{{ p.name }} &middot; {{ m.name }}: {{ m.count }}">{% if m.pct >= 12 %}{{ m.pct|round|int }}%{% endif %}</div>
+                    {% endfor %}
+                </div>
+                <div class="stack-label">{{ p.name }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="pie-legend" style="flex-direction:row; flex-wrap:wrap; gap:14px; margin-top:16px;">
+            {% for n in ch.networks %}
+            <div class="pl-item" style="gap:6px;">
+                <span class="pl-dot" style="background:{{ ch.network_colors[n] }};"></span>
+                <span style="font-size:12px;">{{ n }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <table class="rc-tbl" style="margin-top:18px;">
+            <thead><tr><th>Processor</th><th style="text-align:right;">CB Count</th><th style="text-align:right;">Share</th><th style="text-align:right;">CB Amount</th></tr></thead>
+            <tbody>
+                {% for p in ch.breakdown.processor_rows %}
+                <tr>
+                    <td style="font-weight:600;">{{ p.name }}</td>
+                    <td style="text-align:right;">{{ p.count }}</td>
+                    <td style="text-align:right;">{{ p.pct }}%</td>
+                    <td style="text-align:right;">{{ money(p.amounts) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ═══ 2. Performance Metrics ═══ -->
+<div class="mgr-section">
+    <h3>&#127942; Performance Metrics</h3>
+    <div class="chart-sub" style="margin-top:-10px;">
+        Win / loss split, with conceded cases separated from those still awaiting a decision.
+        Win rate is calculated on decided cases only ({{ ch.performance.decided }} of {{ ch.total }}).
+    </div>
+    {% if ch.performance.simulated %}
+    <div class="sim-note" style="margin-bottom:18px;">
+        &#9888; Outcome figures are simulated &mdash; the source sheet records every dispute as awaiting a response.
+    </div>
+    {% endif %}
+
+    <div class="chart-grid-2" style="margin-bottom:0;">
+        <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:14px;">CB Status vs Card Network</div>
+            <div class="stack-chart" style="height:220px;">
+                {% for s in ch.performance.status_stacks %}
+                <div class="stack-col">
+                    <div class="stack-total">{{ s.total }}</div>
+                    {% if s.total %}
+                    <div class="stack-bar">
+                        {% for seg in s.segments %}
+                        <div class="stack-seg" style="height:{{ seg.pct }}%; background:{{ seg.color }};" title="{{ s.name }} &middot; {{ seg.name }}: {{ seg.count }}">{% if seg.pct >= 14 %}{{ seg.pct|round|int }}%{% endif %}</div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="stack-empty">No cases</div>
+                    {% endif %}
+                    <div class="stack-label">{{ s.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <table class="rc-tbl" style="margin-top:18px;">
+                <thead>
+                    <tr><th>Labels</th>{% for s in ch.performance.status_order %}<th style="text-align:right;">{{ s }}</th>{% endfor %}</tr>
+                </thead>
+                <tbody>
+                    {% for row in ch.performance.status_table %}
+                    <tr>
+                        <td style="font-weight:600;"><span class="pl-dot" style="background:{{ row.color }}; display:inline-block; margin-right:7px;"></span>{{ row.name }}</td>
+                        {% for cell in row.cells %}<td style="text-align:right;">{{ cell }}</td>{% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:14px;">Fought vs Not Fought</div>
+            <div class="pie-wrap">
+                <div class="pie" style="width:150px; height:150px; background: conic-gradient({% for r in ch.performance.fought_rows %}{{ r.color }} {{ r.start_deg }}deg {{ r.end_deg }}deg{{ ', ' if not loop.last }}{% endfor %});"></div>
+                <div class="pie-legend">
+                    {% for r in ch.performance.fought_rows %}
+                    <div class="pl-item">
+                        <span class="pl-dot" style="background:{{ r.color }};"></span>
+                        <span class="pl-name">{{ r.name }}</span>
+                        <span class="pl-val">{{ r.count }} &middot; {{ r.pct }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <table class="rc-tbl" style="margin-top:18px;">
+                <thead><tr><th>Labels</th>{% for r in ch.performance.fought_rows %}<th style="text-align:right;">{{ r.name }}</th>{% endfor %}</tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700;">CB Count</td>{% for r in ch.performance.fought_rows %}<td style="text-align:right;">{{ r.count }}</td>{% endfor %}</tr>
+                    <tr><td style="font-weight:700;">Percentage</td>{% for r in ch.performance.fought_rows %}<td style="text-align:right;">{{ r.pct }}%</td>{% endfor %}</tr>
+                    <tr><td style="font-weight:700;">CB Amount</td>{% for r in ch.performance.fought_rows %}<td style="text-align:right;">{{ money(r.amounts) }}</td>{% endfor %}</tr>
+                </tbody>
+            </table>
+            <div class="chart-note">Fought = defended. Not fought = conceded to the cardholder.</div>
+        </div>
+    </div>
+
+    <div class="chart-grid-2" style="margin-top:26px; margin-bottom:0;">
+        <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:14px;">CB Recovered vs Lost</div>
+            <div class="pie-wrap">
+                <div class="pie hole" style="width:150px; height:150px; background: conic-gradient({% for r in ch.performance.recovered_rows %}{{ r.color }} {{ r.start_deg }}deg {{ r.end_deg }}deg{{ ', ' if not loop.last }}{% endfor %});">
+                    <div class="pie-hole-txt">
+                        <span class="ph-v" style="font-size:19px;">{{ ch.performance.win_rate }}%</span>
+                        <span class="ph-l">Win rate</span>
+                    </div>
+                </div>
+                <div class="pie-legend">
+                    {% for r in ch.performance.recovered_rows %}
+                    <div class="pl-item">
+                        <span class="pl-dot" style="background:{{ r.color }};"></span>
+                        <span class="pl-name">{{ r.name }}</span>
+                        <span class="pl-val">{{ r.count }} &middot; {{ r.pct }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:14px;">Amount at Stake</div>
+            <table class="rc-tbl">
+                <thead><tr><th>Row Labels</th>{% for r in ch.performance.recovered_rows %}<th style="text-align:right;">{{ r.name }}</th>{% endfor %}</tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700;">CB Count</td>{% for r in ch.performance.recovered_rows %}<td style="text-align:right; color:{{ r.color }}; font-weight:600;">{{ r.count }}</td>{% endfor %}</tr>
+                    <tr><td style="font-weight:700;">Percentage</td>{% for r in ch.performance.recovered_rows %}<td style="text-align:right;">{{ r.pct }}%</td>{% endfor %}</tr>
+                    <tr><td style="font-weight:700;">CB Amount</td>{% for r in ch.performance.recovered_rows %}<td style="text-align:right;">{{ money(r.amounts) }}</td>{% endfor %}</tr>
+                </tbody>
+            </table>
+            <div class="chart-note">Win rate counts only decided cases &mdash; {{ ch.performance.won }} won of {{ ch.performance.decided }} decided.</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ 3. CB Type + Geography ═══ -->
+<div class="chart-grid-2">
+    <div class="chart-card">
+        <h3>&#128203; CB Type</h3>
+        <div class="chart-sub">Where each dispute sits in the lifecycle</div>
+        <div class="bar-chart">
+            {% for r in ch.stages.rows %}
+            <div class="bar-col">
+                <div class="bar-val">{{ r.pct }}%</div>
+                <div class="bar-fill {{ 'muted' if not r.known }}" style="height:{{ r.bar_pct }}%;" title="{{ r.name }}: {{ r.count }} cases"></div>
+                <div class="bar-label">{{ r.name }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <table class="rc-tbl" style="margin-top:18px;">
+            <thead><tr><th>Chargeback Stage</th><th style="text-align:right;">Case Count</th><th style="text-align:right;">Share</th></tr></thead>
+            <tbody>
+                {% for r in ch.stages.rows %}
+                <tr>
+                    <td style="font-weight:600;">{{ r.name }}</td>
+                    <td style="text-align:right;">{{ r.count }}</td>
+                    <td style="text-align:right;">{{ r.pct }}%</td>
+                </tr>
+                {% endfor %}
+                <tr><td style="font-weight:700;">Total</td><td style="text-align:right; font-weight:700;">{{ ch.stages.total }}</td><td style="text-align:right;">100%</td></tr>
+            </tbody>
+        </table>
+        {% if ch.stages.unmapped %}
+        <div class="chart-note">{{ ch.stages.unmapped|join(', ') }} {{ 'is' if ch.stages.unmapped|length == 1 else 'are' }} not a standard stage code &mdash; shown as recorded rather than merged away.</div>
+        {% endif %}
+    </div>
+
+    <div class="chart-card">
+        <h3>&#127758; Top {{ ch.geography.region_rows|length }} Delivery Regions</h3>
+        <div class="chart-sub">Chargeback count by delivery region, split by card network</div>
+        <div class="grp-chart">
+            {% for r in ch.geography.region_rows %}
+            <div class="grp-set">
+                <div class="grp-bars">
+                    {% for b in r.bars %}
+                    <div class="grp-bar">
+                        <div class="grp-n">{{ b.count }}</div>
+                        <div class="grp-fill" style="height:{{ b.bar_pct }}%; background:{{ b.color }};" title="{{ r.name }} &middot; {{ b.name }}: {{ b.count }}"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="grp-label">{{ r.name }}<span class="sub">{{ r.count }} cases{{ ' · digital' if r.digital }}</span></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="pie-legend" style="flex-direction:row; flex-wrap:wrap; gap:14px; margin-top:16px;">
+            {% for n in ch.networks %}
+            <div class="pl-item" style="gap:6px;">
+                <span class="pl-dot" style="background:{{ ch.network_colors[n] }};"></span>
+                <span style="font-size:12px;">{{ n }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <table class="rc-tbl" style="margin-top:18px;">
+            <thead><tr><th>Country</th>{% for c in ch.geography.country_rows %}<th style="text-align:right;">{{ c.name }}</th>{% endfor %}</tr></thead>
+            <tbody>
+                <tr><td style="font-weight:700;">CB Count</td>{% for c in ch.geography.country_rows %}<td style="text-align:right;">{{ c.count }}</td>{% endfor %}</tr>
+            </tbody>
+        </table>
+        <div class="chart-note">
+            The delivery column holds worldwide regions, not US states &mdash; {{ ch.geography.distinct_regions }} distinct values.
+            These top {{ ch.geography.region_rows|length }} cover {{ ch.geography.covered }} of {{ ch.total }} cases; the other {{ ch.geography.other }} sit in smaller regions.
+        </div>
+    </div>
+</div>
+
+<!-- ═══ 4. Top Reason Codes per network ═══ -->
+<div class="mgr-section">
+    <h3>&#128269; Top {{ ch.reason_panels[0].rows|length if ch.reason_panels else 5 }} Reason Codes</h3>
+    <div class="chart-sub" style="margin-top:-10px;">Most frequent reason codes within each card network.</div>
+    <div class="chart-grid-2" style="margin-bottom:0;">
+        {% for p in ch.reason_panels %}
+        <div style="border:1px solid #f2e4da; border-radius:14px; padding:18px 20px;">
+            <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:14px;">
+                <span class="pl-dot" style="background:{{ p.color }};"></span>
+                <span style="font-size:14px; font-weight:700;">{{ p.network }}</span>
+                <span style="font-size:11.5px; color:#a89383; margin-left:auto;">{{ p.cases }} cases &middot; {{ p.distinct }} codes</span>
+            </div>
+            <div class="hbar-list">
+                {% for r in p.rows %}
+                <div class="hbar">
+                    <div>
+                        <div class="hbar-name"><code>{{ r.code }}</code> &mdash; {{ r.label }}</div>
+                        <div class="hbar-track"><div class="hbar-fill" style="width:{{ r.bar_pct }}%; background:{{ p.color }};"></div></div>
+                    </div>
+                    <div class="hbar-val">{{ r.count }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% if p.distinct >= p.cases %}
+            <div class="chart-note">Every code in this network appears once &mdash; there is no concentration to rank in the current data.</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ═══ 5. Volume Trends ═══ -->
+<div class="mgr-section">
+    <h3>&#128200; CB Volume Trend</h3>
+    <div class="chart-sub" style="margin-top:-10px;">
+        Chargebacks received over time, stacked by card network.
+        {% if ch.trend.span.days %}Covering {{ ch.trend.span.start }} to {{ ch.trend.span.end }}.{% endif %}
+    </div>
+
+    <div class="trend-toolbar">
+        <span style="font-size:12px; font-weight:600; color:#8a7365;">GROUP BY</span>
+        <button type="button" class="seg-btn on" data-gran="daily" onclick="setTrendGran('daily', this)">Daily</button>
+        <button type="button" class="seg-btn" data-gran="weekly" onclick="setTrendGran('weekly', this)">Weekly</button>
+        <button type="button" class="seg-btn" data-gran="monthly" onclick="setTrendGran('monthly', this)">Monthly</button>
+
+        <span style="font-size:12px; font-weight:600; color:#8a7365; margin-left:14px;">TIMEFRAME</span>
+        <select id="trend-window" onchange="renderTrend()" style="padding:6px 12px; border:1px solid #fbd9c4; border-radius:8px; font-size:13px;">
+            <option value="all">All time</option>
+            <option value="7">Last 7 periods</option>
+            <option value="14">Last 14 periods</option>
+            <option value="30">Last 30 periods</option>
+        </select>
+
+        <span style="font-size:12px; font-weight:600; color:#8a7365; margin-left:14px;">NETWORK</span>
+        <select id="trend-network" onchange="renderTrend()" style="padding:6px 12px; border:1px solid #fbd9c4; border-radius:8px; font-size:13px;">
+            <option value="All">All networks</option>
+            {% for n in ch.networks %}<option value="{{ n }}">{{ n }}</option>{% endfor %}
+        </select>
+
+        <span id="trend-summary" style="font-size:12px; color:#8a7365; margin-left:auto;"></span>
+    </div>
+
+    <div class="trend-scroll">
+        <div class="tr-chart" id="tr-chart"></div>
+    </div>
+
+    <div class="pie-legend" style="flex-direction:row; flex-wrap:wrap; gap:14px; margin-top:14px;">
+        {% for n in ch.networks %}
+        <div class="pl-item" style="gap:6px;">
+            <span class="pl-dot" style="background:{{ ch.network_colors[n] }};"></span>
+            <span style="font-size:12px;">{{ n }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% if ch.trend.undated %}
+    <div class="chart-note">{{ ch.trend.undated }} case{{ 's' if ch.trend.undated != 1 }} had no usable date and are excluded from this chart.</div>
+    {% endif %}
+</div>
+
+{% else %}
+<div class="mgr-section"><p style="color:#8a7365;">No case data loaded &mdash; ingest cases to populate the analytics.</p></div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+{% if ch.has_data %}
+/* ── Volume trend ───────────────────────────────────────────────────────────
+   Series for all three granularities are precomputed server-side; the chart
+   is redrawn client-side so the granularity / timeframe / network filters
+   respond without a round trip. */
+const TREND = {{ ch.trend.series | tojson }};
+const NET_COLORS = {{ ch.network_colors | tojson }};
+const NETWORKS = {{ ch.networks | tojson }};
+let trendGran = 'daily';
+
+function setTrendGran(gran, btn) {
+    trendGran = gran;
+    document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    renderTrend();
+}
+
+function renderTrend() {
+    const host = document.getElementById('tr-chart');
+    if (!host) return;
+
+    const win = document.getElementById('trend-window').value;
+    const net = document.getElementById('trend-network').value;
+
+    let points = TREND[trendGran] || [];
+    if (win !== 'all') points = points.slice(-parseInt(win, 10));
+
+    const shown = net === 'All' ? NETWORKS : [net];
+    // Recompute each point's total for the selected network(s).
+    const rows = points.map(p => ({
+        label: p.label,
+        total: shown.reduce((sum, n) => sum + (p.by_network[n] || 0), 0),
+        by: p.by_network,
+    }));
+
+    const peak = Math.max(1, ...rows.map(r => r.total));
+    const grand = rows.reduce((s, r) => s + r.total, 0);
+
+    document.getElementById('trend-summary').textContent =
+        rows.length ? grand + ' chargebacks across ' + rows.length + ' period' + (rows.length === 1 ? '' : 's') + ' · peak ' + peak
+                    : '';
+
+    if (!rows.length) {
+        host.innerHTML = '<div class="tr-empty">No chargebacks in this timeframe.</div>';
+        return;
+    }
+
+    host.innerHTML = rows.map(r => {
+        // Bar height is a share of the plot area, leaving room for the value label.
+        const h = r.total ? Math.max(2, r.total / peak * 82) : 0;
+        const segs = shown.map(n => {
+            const v = r.by[n] || 0;
+            if (!v) return '';
+            const segH = v / r.total * 100;
+            return '<div class="tr-seg" style="height:' + segH + '%; background:' + (NET_COLORS[n] || '#c9a898') +
+                   ';" title="' + n + ': ' + v + '"></div>';
+        }).join('');
+        return '<div class="tr-col">' +
+                 '<div class="tr-val">' + (r.total || '') + '</div>' +
+                 '<div class="tr-stack" style="height:' + h + '%;">' + segs + '</div>' +
+                 '<div class="tr-label">' + r.label + '</div>' +
+               '</div>';
+    }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', renderTrend);
+{% endif %}
+
+</script>
+{% endblock %}

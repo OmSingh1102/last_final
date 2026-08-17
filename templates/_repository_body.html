@@ -1,0 +1,51 @@
+{# The two tiles that have real content behind them. Special Documents and
+   Product URLs are gone: nothing in the data backs them, and an empty tile
+   reads as a broken feature rather than an unbuilt one. #}
+
+<div class="rep-section">
+    <h3>Cover Letters</h3>
+    <div class="sub">{{ lib.cover_letters|length }} representment templates, one per reason category. Open one to read the letter that would go out.</div>
+    <div class="card-grid">
+        {% for cl in lib.cover_letters %}
+        <button type="button" class="rep-card" onclick="openLetter('{{ cl.key }}')">
+            <div class="t">{{ cl.label }}</div>
+            <div class="b">{{ cl.subheading }}</div>
+            <div class="meta">{{ cl.points|length }} defence point{{ '' if cl.points|length == 1 else 's' }}</div>
+        </button>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="rep-section">
+    <h3>Client Documents</h3>
+    <div class="sub">{{ lib.documents|length }} evidence documents generated per case from the client's own record.</div>
+    <div class="card-grid">
+        {% for d in lib.documents %}
+        <button type="button" class="rep-card doc-card" onclick="openDoc('{{ d.key }}')">
+            <div class="t"><span class="ic">{{ d.icon }}</span>{{ d.title }}</div>
+            <div class="b">{{ d.blurb }}</div>
+            <div class="meta">
+                {% if d.columns %}{{ d.columns|length }} fields{% else %}Policy document{% endif %}
+            </div>
+        </button>
+        {% endfor %}
+    </div>
+</div>
+
+{# ── Viewer ── #}
+<div class="rep-overlay" id="rep-overlay" onclick="if (event.target === this) closeRep()">
+    <div class="rep-modal">
+        <header>
+            <div>
+                <h4 id="rep-title">&nbsp;</h4>
+                <div class="s" id="rep-sub"></div>
+            </div>
+            <button class="rep-close" onclick="closeRep()" aria-label="Close">&times;</button>
+        </header>
+        <div class="rep-body" id="rep-body"></div>
+    </div>
+</div>
+
+<script type="application/json" id="rep-data">
+{{ {'letters': lib.cover_letters, 'documents': lib.documents} | tojson }}
+</script>

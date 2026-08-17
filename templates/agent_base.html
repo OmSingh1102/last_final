@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agent Level Interface - ChargeShield AI{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* ─── Agent shell: header on top, sidebar down the left ─── */
+        .agent-shell { display: flex; gap: 22px; padding: 22px 30px; align-items: flex-start; }
+
+        .agent-side {
+            width: 230px;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #fff 0%, #fff4ec 100%);
+            border: 1px solid var(--line-strong);
+            border-radius: 22px;
+            padding: 18px 14px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 88px;
+        }
+
+        .agent-side-title {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            color: var(--ink-soft);
+            padding: 4px 12px 12px;
+        }
+
+        .side-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            margin-bottom: 4px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #6d5648;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all .18s;
+        }
+        .side-link:hover { background: #fff; border-color: var(--line-strong); color: var(--brand-dark); text-decoration: none; }
+        .side-link.active {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(43, 27, 18, .22);
+        }
+        .side-link .si { width: 18px; text-align: center; }
+
+        .side-sep { height: 1px; background: var(--line-strong); margin: 12px 8px; }
+
+        .side-logout { width: 100%; }
+        .side-logout button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--line-strong);
+            background: #fff;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #6d5648;
+            cursor: pointer;
+            transition: all .18s;
+        }
+        .side-logout button:hover { border-color: var(--brand); color: var(--brand-dark); }
+
+        .agent-main { flex: 1; min-width: 0; }
+
+        .agent-head { margin-bottom: 20px; }
+        .agent-head h2 { font-size: 22px; font-weight: 800; color: var(--ink); }
+        .agent-head p { color: var(--ink-soft); font-size: 13.5px; margin-top: 2px; }
+
+        .scope-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 10px;
+            padding: 6px 13px;
+            background: var(--brand-tint);
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--brand-dark);
+        }
+
+        @media (max-width: 900px) {
+            .agent-shell { flex-direction: column; }
+            .agent-side { width: 100%; position: static; }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="header">
+        <div class="header-bar">
+            <div class="header-title">
+                <span class="brand-mark">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 1.5 3.5 5.2v6.4c0 5.2 3.6 10 8.5 11.4 4.9-1.4 8.5-6.2 8.5-11.4V5.2L12 1.5Zm-1.3 15.1-4-4 1.6-1.6 2.4 2.4 5.4-5.4 1.6 1.6-7 7Z"/>
+                    </svg>
+                </span>
+                <div>
+                    <h1>Agent Level Interface</h1>
+                    <div class="brand-sub">ChargeShield AI &mdash; Chargeback Defense Platform</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-chip">
+                    <span class="user-avatar">{{ session.user[0]|upper }}</span>
+                    <span class="user-name">{{ session.user }}</span>
+                    <span class="user-role">{{ role_label }}</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="{{ url_for('static', filename='img/straive-logo.svg') }}" alt="Straive">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="agent-shell">
+        <nav class="agent-side">
+            <div class="agent-side-title">{{ a.agent }} workspace</div>
+            {% for item in agent_nav %}
+            <a href="{{ url_for(item.endpoint) }}"
+               class="side-link {% if request.endpoint == item.endpoint %}active{% endif %}">
+                <span class="si">{{ item.icon|safe }}</span> {{ item.label }}
+            </a>
+            {% endfor %}
+            <div class="side-sep"></div>
+            <form method="post" action="{{ url_for('logout') }}" class="side-logout">
+                <button type="submit"><span class="si">&#10162;</span> Logout</button>
+            </form>
+        </nav>
+
+        <main class="agent-main">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    {% include "_live_refresh.html" %}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

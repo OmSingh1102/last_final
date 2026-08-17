@@ -1,0 +1,1062 @@
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 16:12:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:12:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:12:56] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:12:56] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:12:57] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [15/Aug/2026 16:13:00] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:01] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:01] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:01] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [15/Aug/2026 16:13:04] "GET /login/client HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:04] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:05] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:05] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [15/Aug/2026 16:13:39] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:13:40] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:42] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:42] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:44] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:13:45] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:47] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:47] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:49] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:13:49] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:51] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:13:51] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:14:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:14:15] "GET /manager-hub HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:14:15] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:14:16] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:14:16] "GET /manager-hub HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:15:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:15:08] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:15:08] "GET /login/client HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:04] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:05] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:06] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [15/Aug/2026 16:16:11] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:11] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:11] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:11] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:27] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:16:27] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:28] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:28] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:28] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:42] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:16:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:43] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:43] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:45] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:45] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:45] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:47] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:57] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:16:57] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:57] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:16:57] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:16:58] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:08] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:17:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:08] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:08] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:09] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:09] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:10] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:10] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:19] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:17:19] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:20] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:28] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:28] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:28] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:40] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:40] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:40] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:40] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:47] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:47] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:47] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:47] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:50] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:50] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:50] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:51] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:55] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:55] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:55] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:55] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:59] "GET /processor/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:17:59] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:59] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:17:59] "GET /processor/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:04] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:04] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:04] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:04] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:11] "GET /gateway-receipt/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:11] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:11] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:11] "GET /gateway-receipt/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:14] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:14] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:14] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:14] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:18] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:18] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:18] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:20] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:27] "GET /case/kmgjdshoiwer8793 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:27] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:27] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:27] "GET /case/kmgjdshoiwer8793 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:30] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:30] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:30] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:31] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:34] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:18:35] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:35] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:18:35] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:19:23] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:19:24] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:19:24] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:19:26] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:19:29] "GET /case/kmgjdshoiwer8793 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:19:29] "GET /case/kmgjdshoiwer8793 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:19:29] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:19:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:32] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:33] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:33] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:33] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:34] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:35] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:35] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:35] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:37] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:37] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:37] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:38] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:20:39] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:39] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:20:39] "GET /manager-hub HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 16:23:05] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:23:05] "GET /review/kmgjdshoiwer8792 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:07] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:07] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:26] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:23:26] "GET /review/kmgjdshoiwer8792 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:28] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:28] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:54] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:23:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:23:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:23:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:55] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:56] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:23:56] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:23:56] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:12] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:24:13] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:13] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:23] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:24:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:24] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:24] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:25] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:25] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:25] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:25] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:34] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 16:24:34] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:34] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:34] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:35] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:42] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:42] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:42] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:43] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:50] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:50] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:50] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:50] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:54] "GET /processor/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:54] "GET /processor/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:56] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:57] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:57] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:57] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:58] "GET /gateway-receipt/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:24:58] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:58] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:24:59] "GET /gateway-receipt/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:00] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:00] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:00] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:01] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:07] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:07] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:07] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:08] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:12] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:13] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:19] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:25:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:25:19] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 16:27:01] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:01] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:01] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:01] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:03] "GET /chargeback/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:03] "GET /chargeback/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:06] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:06] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:06] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:06] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:09] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:09] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:09] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:09] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:13] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:13] "GET /review/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:15] "GET /chargeback/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:16] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:16] "GET /chargeback/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:16] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:25] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:25] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:25] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:26] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:41] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:41] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:41] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:42] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:43] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:43] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:43] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:43] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:45] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:45] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 16:27:45] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 16:27:45] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 17:50:29] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 17:50:29] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:29] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:29] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:32] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:32] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:38] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:50:38] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:03] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 17:51:03] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:04] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:04] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:04] "GET /agent/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:04] "GET /agent/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:04] "GET /manager-hub HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 17:51:42] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:42] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:43] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:43] "GET /qa-review HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:44] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:44] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:44] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:44] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:50] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:51:50] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:50] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:51:51] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:14] "GET /counter/viosdyui6890wek2 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:15] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:15] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:15] "GET /counter/viosdyui6890wek2 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:26] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:26] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:27] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:27] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:31] "GET /agent/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:31] "GET /agent/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:31] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:31] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:34] "GET /agent/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:34] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:35] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:35] "GET /agent/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:44] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:44] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:44] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:44] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:53] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 17:52:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:56] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:56] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:52:56] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:52:56] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:13] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [15/Aug/2026 17:53:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:14] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:20] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 17:53:20] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:20] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:20] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:20] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:37] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:38] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:38] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:38] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:47] "GET /case/kmgjdshoiwer8807 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:47] "GET /case/kmgjdshoiwer8807 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:47] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:47] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:51] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:51] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:51] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:51] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:54] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:53:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:53:54] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:54:02] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:54:02] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:54:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:54:03] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:54:13] "GET /counter/h5yiulkkas23483 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:54:14] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:54:14] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:54:14] "GET /counter/h5yiulkkas23483 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:03] "GET /counter/Agysjdkfshjdwewuier234998 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:03] "GET /counter/Agysjdkfshjdwewuier234998 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:06] "GET /chargeback/Agysjdkfshjdwewuier234998 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:06] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:06] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:06] "GET /chargeback/Agysjdkfshjdwewuier234998 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:08] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:55:09] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:09] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:55:09] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:56:17] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 17:56:17] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:56:17] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 17:56:17] "GET /agent/chargebacks HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 18:00:18] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 18:00:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:20] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:20] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:20] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:20] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:35] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 18:00:36] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:36] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:36] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:37] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:47] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:47] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:00:47] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:00:47] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:15] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:15] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:15] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:15] "GET /agent/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:18] "GET /agent/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:18] "GET /agent/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:21] "GET /agent/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:21] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:21] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:21] "GET /agent/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:23] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:23] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:01:23] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:01:23] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 18:15:40] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 18:15:40] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:15:44] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:15:44] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:16:15] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 18:16:16] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:16:18] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:16:18] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:17:27] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:17:27] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:17:27] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:17:28] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:17:29] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 18:17:29] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:17:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 18:17:29] "GET /agent/chargebacks HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\agent_desk.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\agent_console.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 19:05:06] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:05:06] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:06] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:07] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:09] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:09] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:14] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:05:14] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:01] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:01] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:01] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:02] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:03] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:06:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:05] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:05] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:05] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:05] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:15] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:06:15] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:16] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:16] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:16] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:25] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:26] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:26] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:27] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:52] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:53] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:53] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:53] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:59] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:06:59] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:59] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:06:59] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:13] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:13] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:20] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:20] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:20] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:21] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:22] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:22] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:22] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:23] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:26] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:26] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:27] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:28] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:29] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:29] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:29] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:39] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:07:39] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:39] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:07:40] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:35] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:08:35] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:35] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:38] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:38] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:43] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:43] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:49] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:08:49] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:09:38] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:09:38] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:09:50] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:09:50] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:10] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:10:11] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:13] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:13] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:39] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:39] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:42] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:42] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:46] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:10:46] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:11:12] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:11:12] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:11:12] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:11:12] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:12:29] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:12:29] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:12:29] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:12:29] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:12:31] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:13:49] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:13:50] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:13:50] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:13:50] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:13:56] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:13:56] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:13:56] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:13:56] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:03] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:24:03] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:24:03] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:04] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:04] "POST /admin/allocate HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:04] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:24:22] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:22] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:24:23] "POST /admin/rework HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:23] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:24:23] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:24:23] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:23] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /admin/rework HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /agent-desk/action HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:24:51] "POST /agent-desk/action HTTP/1.1" 403 -
+127.0.0.1 - - [15/Aug/2026 19:30:37] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:37] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:38] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:44] "POST /admin/rework HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:51] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:51] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:51] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:51] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:55] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:55] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:55] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:30:56] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:30:59] "POST /admin/rework HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:04] "POST /admin/rework HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:11] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:12] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:12] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:12] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:29] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:29] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:29] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:36] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:36] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:36] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:36] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:49] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:31:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:49] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:49] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:51] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:51] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:31:51] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:31:51] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:05] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:32:06] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:06] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:06] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:07] "GET /agent/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:16] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:17] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:17] "GET /agent/chargebacks HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:17] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:48] "POST /agent-desk/action HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:53] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:32:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:56] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:56] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:32:57] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:32:57] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:33:08] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 19:33:08] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:33:08] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:33:08] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:33:08] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:33:14] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 19:33:14] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:33:14] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 19:33:14] "GET /admin/approvals HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\team_console.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\team_console.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 21:24:18] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:24:18] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:24:19] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:24:21] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:24:21] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:24:23] "GET /static/img/straive-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:24:23] "GET /static/css/style.css HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\manager_console.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\chargeback\\analytics\\manager_console.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 21:26:05] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:26:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:05] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:05] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:07] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:07] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:07] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:07] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:29] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:26:29] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:29] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:29] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:30] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:47] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:47] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:47] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:47] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:57] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:26:57] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:57] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:26:57] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:27:13] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:27:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:27:13] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:27:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:51] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:28:51] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:51] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:52] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:28:54] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:28:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:54] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:28:59] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:28:59] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:59] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:28:59] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:00] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:00] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:01] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:01] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:01] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:03] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:04] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:04] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:04] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:04] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:34] "GET /manager/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:34] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:34] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:34] "GET /manager/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:41] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:41] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:42] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:42] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:47] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:48] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:48] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:48] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:49] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:55] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:55] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:56] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:30:56] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:56] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:30:57] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:20] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:22] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:22] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:31:22] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:31:23] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:31] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:32] "POST /manager/route HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:32] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:32] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:31:32] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:31:32] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:21] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:22] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:22] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:22] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:35] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:35] "GET /case/h5yiulkkas23481 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:35] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:36] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:48] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:48] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:48] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:49] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:53] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:53] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:53] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:53] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:55] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:32:55] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:55] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:32:56] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:17] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:17] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:17] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:17] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:19] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:19] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:21] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:22] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:22] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:22] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:41] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:41] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:41] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:41] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:44] "GET /manager/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:44] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:44] "GET /manager/settings HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:44] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:45] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:45] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:45] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:45] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:47] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:48] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:48] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:48] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:53] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:33:54] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:54] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:33:54] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:12] "GET /case/viosdyui6890wek2 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:13] "GET /case/viosdyui6890wek2 HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:13] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:13] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:15] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:16] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:16] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:16] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:54] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:55] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:55] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:55] "GET /manager-hub HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:57] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:57] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:57] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:57] "GET /manager/reports HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:59] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:34:59] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:59] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:34:59] "GET /manager/history HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:35:02] "GET /manager/onboarding HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:35:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:35:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:35:03] "GET /manager/onboarding HTTP/1.1" 200 -
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+ * Detected change in 'C:\\Users\\Om singh\\Downloads\\New-main\\New-main\\app.py', reloading
+Loaded 100 cases from Chargeback_case_dummy_data_100.csv
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 369-383-112
+127.0.0.1 - - [15/Aug/2026 21:45:37] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:45:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:45:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:37] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:45:39] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:45:39] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:45:39] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:39] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:51] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:45:51] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:45:52] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:52] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:45:52] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:02] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:03] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:03] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:07] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:07] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:07] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:07] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:11] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:11] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:11] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:11] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:17] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:17] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:17] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:18] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:18] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:19] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:19] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:19] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:22] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:22] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:22] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:23] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:24] "GET /admin/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:24] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:24] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:24] "GET /admin/credentials HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:25] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:25] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:26] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:26] "GET /ingest HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:28] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:28] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:28] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:28] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:31] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:31] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:31] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:31] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:32] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:32] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:32] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:33] "GET /agent-desk HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:37] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:37] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:37] "GET /admin/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:44] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:44] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:44] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:45] "GET /admin/allocation HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:55] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:46:55] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:56] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:46:56] "GET /admin/approvals HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:02] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:02] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:47:02] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:47:02] "GET /admin/repository HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:08] "POST /logout HTTP/1.1" 302 -
+127.0.0.1 - - [15/Aug/2026 21:47:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:08] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:47:08] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:47:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:11] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:11] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [15/Aug/2026 21:47:12] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [15/Aug/2026 21:47:12] "GET /static/img/straive-logo.svg HTTP/1.1" 304 -

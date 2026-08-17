@@ -1,0 +1,601 @@
+{% extends "base.html" %}
+{% block title %}Counter Evidence - {{ case.case_id }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.ce-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; }
+@media (max-width: 900px) { .ce-layout { grid-template-columns: 1fr; } }
+
+.ce-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.ce-header h2 { font-size: 16px; font-weight: 700; color: #2e1f17; margin: 0; }
+.ce-close { font-size: 20px; color: #b0998a; text-decoration: none; font-weight: 700; }
+.ce-close:hover { color: #2e1f17; }
+.ce-tier { margin-left: auto; padding: 4px 12px; border-radius: 999px; font-size: 10.5px;
+           font-weight: 800; text-transform: uppercase; letter-spacing: .4px; }
+.ce-tier.fully_automated { background: #e8f5e9; color: #2e7d32; }
+.ce-tier.semi_automated  { background: #fff4e5; color: #b45309; }
+.ce-tier.manual          { background: #f0eeec; color: #6d6259; }
+
+/* Header table */
+.ce-info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+.ce-info-table td { border: 1px solid #e8dad0; padding: 8px 12px; }
+.ce-info-table .lbl { font-weight: 700; color: #6b584c; width: 25%; }
+.ce-info-table .val { font-family: monospace; color: #2e1f17; width: 25%; }
+
+/* Section titles */
+.ce-section-title { font-size: 14px; font-weight: 800; color: #2e1f17; margin: 24px 0 8px; text-decoration: underline; }
+
+/* Textareas */
+.ce-textarea { width: 100%; padding: 10px 12px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 13px; color: #2e1f17; min-height: 60px; resize: vertical; line-height: 1.6; font-family: inherit; }
+.ce-textarea:focus { outline: none; border-color: #f4611a; }
+
+/* Evidence list */
+.ce-evidence-list { margin: 12px 0 16px 20px; padding: 10px 16px; background: #ffeadd; border-radius: 6px; font-size: 13px; color: #f4611a; font-weight: 600; font-style: italic; }
+.ce-evidence-list ol { margin: 0; padding-left: 18px; }
+.ce-evidence-list li { margin: 3px 0; }
+
+/* Compelling evidence label */
+.ce-compelling { font-size: 13px; font-weight: 700; color: #2e1f17; margin: 10px 0 8px; }
+.ce-compelling .src-sys { color: #2e7d32; }
+.ce-compelling .src-man { color: #c2410c; }
+
+/* ── Fetched-from-system block ── */
+.ce-fetched { border: 1px solid #e8dad0; border-left: 4px solid #2e7d32; border-radius: 8px;
+              background: #fff; margin: 8px 0 16px; overflow: hidden; }
+.ce-fetched-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+                   padding: 8px 14px; background: #f1f8f2; border-bottom: 1px solid #e8dad0; }
+.ce-fetched-head .badge { font-size: 10px; font-weight: 800; letter-spacing: .4px;
+                          text-transform: uppercase; color: #2e7d32; }
+.ce-fetched-head .cols { font-size: 10.5px; color: #9c8578; margin-left: auto; word-break: break-word; }
+.ce-fetched-head .policy { font-size: 9.5px; font-weight: 800; letter-spacing: .3px;
+                           text-transform: uppercase; color: #c2410c; background: #ffeadd;
+                           padding: 2px 8px; border-radius: 20px; }
+.ce-fetched-body { padding: 4px 14px 12px; }
+.ce-fetched h4 { font-size: 12px; font-weight: 800; color: #f4611a; margin: 12px 0 6px;
+                 text-transform: uppercase; letter-spacing: .3px; }
+.ce-doc-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.ce-doc-table td { border: 1px solid #f0e6df; padding: 6px 10px; vertical-align: top; }
+.ce-doc-table td.k { color: #6b584c; width: 38%; }
+.ce-doc-table td.v { color: #2e1f17; font-family: monospace; word-break: break-word; }
+.ce-doc-table tr:nth-child(even) td { background: #fdf9f7; }
+.ce-doc-para { font-size: 12.5px; color: #2e1f17; line-height: 1.65; margin: 0 0 7px; }
+.ce-unavailable { padding: 12px 14px; font-size: 12.5px; color: #9c8578; font-style: italic; }
+
+/* Upload areas */
+.ce-upload-form { margin: 8px 0 16px; }
+/* display:block — it is a <label> wrapping a hidden file input, and a label is
+   inline by default, which collapses the dashed box. */
+.ce-upload-area { display: block; border: 1px dashed #e8dad0; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: .2s; background: #fafafa; }
+.ce-upload-area:hover { border-color: #f4611a; background: #fff7f2; }
+.ce-upload-plus { font-size: 24px; color: #d0bcae; }
+.ce-upload-text { font-size: 11px; color: #f4611a; margin-top: 4px; }
+.ce-upload-hint { font-size: 10px; color: #b0998a; margin-top: 3px; }
+.ce-upload-form input[type=file] { display: none; }
+.ce-upload-go { display: none; margin-top: 8px; width: 100%; padding: 9px; border: none; border-radius: 8px;
+                background: #f4611a; color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; }
+.ce-upload-go:hover { background: #c2410c; }
+.ce-upload-form.picked .ce-upload-go { display: block; }
+
+.ce-uploaded-file { display: block; max-width: 100%; background: #f7efe9; border-radius: 6px; margin: 8px 0; overflow: hidden; border: 1px solid #e0e0e0; }
+.ce-uploaded-file img { width: 100%; height: auto; display: block; }
+.ce-file-row { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 12px; }
+.ce-file-row a { color: #2e7d32; font-weight: 700; text-decoration: none; word-break: break-all; }
+.ce-file-row a:hover { text-decoration: underline; }
+.ce-file-row .meta { color: #9c8578; font-size: 10.5px; margin-left: auto; white-space: nowrap; }
+.ce-del { background: none; border: none; color: #c62828; cursor: pointer; font-size: 15px; line-height: 1; padding: 0 2px; }
+
+/* Flash */
+.ce-flash { padding: 10px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600; margin-bottom: 12px; }
+.ce-flash.success { background: #e8f5e9; color: #2e7d32; }
+.ce-flash.error { background: #fdecea; color: #c62828; }
+
+/* Bottom bar */
+.ce-bottom { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 0; margin-top: 20px; border-top: 1px solid #f7efe9; }
+.ce-btn { padding: 10px 24px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; }
+.ce-btn-cancel { background: #fff; color: #7a6558; border: 1px solid #e8dad0; }
+.ce-btn-cancel:hover { background: #f7efe9; }
+.ce-btn-download { background: #fff; color: #f4611a; border: 1px solid #f4611a; }
+.ce-btn-download:hover { background: #ffeadd; }
+.ce-btn-submit { background: #f4611a; color: #fff; }
+.ce-btn-submit:hover { background: #c2410c; }
+
+/* Sidebar */
+.ce-sidebar { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 1px 6px rgba(0,0,0,.06); position: sticky; top: 80px; }
+.ce-sidebar-title { font-size: 14px; font-weight: 800; color: #2e1f17; margin-bottom: 4px; }
+.ce-sidebar-bar { height: 3px; background: #f4611a; border-radius: 2px; margin-bottom: 14px; }
+.ce-sidebar-desc { font-size: 12px; color: #9c8578; margin-bottom: 14px; line-height: 1.5; }
+.ce-sidebar-list { list-style: none; padding: 0; margin: 0; }
+.ce-sidebar-list li { font-size: 11.5px; color: #6b584c; margin-bottom: 5px; display: flex; gap: 6px; align-items: flex-start; }
+.ce-sidebar-list .have { color: #2e7d32; }
+.ce-sidebar-list .miss { color: #c62828; }
+
+/* Modal */
+.ce-modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.4); z-index:9000; display:none; align-items:center; justify-content:center; }
+.ce-modal-overlay.open { display:flex; }
+.ce-modal { background:#fff; border-radius:12px; padding:32px; max-width:420px; width:90%; text-align:center; }
+
+/* Print */
+@media print {
+    .header, .ce-header, .ce-bottom, .ce-modal-overlay, .ce-flash { display: none !important; }
+    .ce-layout { grid-template-columns: 1fr !important; }
+    .ce-sidebar { display: none !important; }
+    .ce-upload-form { display: none !important; }
+    .ce-textarea { display: none !important; }
+    .ce-print-text { display: block !important; }
+    .ce-uploaded-file { max-width: 100% !important; width: 100% !important; page-break-inside: avoid; }
+    .ce-uploaded-file img { max-width: 100% !important; width: 100% !important; height: auto !important; }
+    .ce-fetched { page-break-inside: avoid; }
+    body { background: #fff !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .ce-print-header { display: block !important; }
+}
+.ce-print-header { display: none; }
+.ce-print-text { display: none; font-size: 13px; color: #2e1f17; line-height: 1.7; white-space: pre-wrap; }
+</style>
+{% endblock %}
+
+{#
+  Two macros keep the nine sections short: one renders a document the system
+  already holds, the other renders the upload box for one an agent must supply.
+#}
+{% macro fetched(doc) %}
+<div class="ce-fetched">
+    <div class="ce-fetched-head">
+        <span class="badge">&#10003; Fetched from system</span>
+        {% if doc.policy %}<span class="policy">Merchant policy</span>{% endif %}
+        <span class="cols">{{ doc.columns }}</span>
+    </div>
+    {% if doc.available %}
+    <div class="ce-fetched-body">
+        {% for heading, body in doc.sections %}
+        <h4>{{ heading }}</h4>
+        {% if body and body[0] is string %}
+            {% for para in body %}<p class="ce-doc-para">{{ para }}</p>{% endfor %}
+        {% else %}
+        <table class="ce-doc-table">
+            {% for label, value in body %}
+            <tr><td class="k">{{ label }}</td><td class="v">{{ value }}</td></tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% endfor %}
+        {% if doc.note %}<p class="ce-doc-para" style="color:#9c8578; font-style:italic; margin-top:10px;">{{ doc.note }}</p>{% endif %}
+    </div>
+    {% else %}
+    <div class="ce-unavailable">{{ doc.note or 'Not held in the system for this case.' }}</div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{# Split in three so a fetched section can still list files uploaded against it
+   before the client moved onto a hands-off tier, without also offering a form
+   that the tier says nobody should be filling in. upload_box keeps its old
+   shape, so every existing call site is untouched. #}
+{% macro uploaded_files(requirement) %}
+{% for up in uploads_by_slug.get(requirement|slug, []) %}
+<div class="ce-uploaded-file">
+    {% if up.filename.lower().endswith(('.png', '.jpg', '.jpeg')) %}
+    <img src="{{ up.url }}" alt="{{ up.filename }}">
+    {% endif %}
+    <div class="ce-file-row">
+        <span>&#128196;</span>
+        <a href="{{ up.url }}">{{ up.filename }}</a>
+        <span class="meta">{{ up.size_kb }} KB &middot; {{ up.uploaded_at }}</span>
+        <form method="post" action="{{ up.delete_url }}" style="display:inline;">
+            <button type="submit" class="ce-del" title="Remove">&times;</button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro upload_form(requirement) %}
+<form method="post" enctype="multipart/form-data" class="ce-upload-form"
+      action="{{ url_for('counter_upload', case_id=case.case_id) }}">
+    <input type="hidden" name="requirement" value="{{ requirement }}">
+    <label class="ce-upload-area">
+        <div class="ce-upload-plus">+</div>
+        <div class="ce-upload-text">Paste or upload file</div>
+        <div class="ce-upload-hint">{{ upload_exts|join(' ') }} &middot; max {{ max_upload_mb }} MB</div>
+        <input type="file" name="evidence_file" accept="{{ upload_exts|join(',') }}" required>
+    </label>
+    <button type="submit" class="ce-upload-go">Upload selected file</button>
+</form>
+{% endmacro %}
+
+{% macro upload_box(requirement) %}
+{{ uploaded_files(requirement) }}{{ upload_form(requirement) }}
+{% endmacro %}
+
+{# One letter section, rendered the way this client's tier says it should be.
+   Replaces nine hand-written pairs that hardcoded which sections were fetched
+   and which were uploaded. #}
+{% macro section(key) %}
+{% set label = section_labels[key] %}
+{% if section_modes[key] == 'system' %}
+<div class="ce-compelling">Compelling Evidence: {{ '{' }}{{ documents[key].title }}{{ '}' }}
+    <span class="src-sys">&mdash; fetched from the case record</span></div>
+{{ fetched(documents[key]) }}
+{{ uploaded_files(label) }}
+{% else %}
+<div class="ce-compelling">Compelling Evidence Attached: {{ '{' }}{{ label }}{{ '}' }}
+    <span class="src-man">&mdash; upload required</span></div>
+{{ upload_box(label) }}
+{% endif %}
+{% endmacro %}
+
+{% block content %}
+<div class="ce-print-header" style="text-align:center; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #2e1f17;">
+    <h2 style="font-size:16px; font-weight:800; color:#2e1f17; margin:0 0 4px;">Counter Evidence - {{ case.case_id }}</h2>
+    <p style="font-size:12px; color:#9c8578; margin:0;">{{ case.get('reason_description', case.scenario) }} | {{ case.get('currency','USD') }} {{ "%.2f"|format(case.amount) }}</p>
+</div>
+
+<div class="ce-header">
+    <a href="{{ url_for('chargeback_detail', case_id=case.case_id) }}" class="ce-close">&times;</a>
+    <h2>Counter Evidence</h2>
+    <span class="ce-tier {{ tier }}">{{ tier_label }} &middot; {{ client }}</span>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+    <div class="ce-flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+<div class="ce-layout">
+    <div>
+        {# ── Header Table ── #}
+        <table class="ce-info-table">
+            <tr>
+                <td class="lbl">Merchant Number: </td>
+                <td class="val">{{ case.get('acquirer_code', '') or case.get('merchant_account', '') or 'N/A' }}</td>
+                <td class="lbl">DBA Name: </td>
+                <td class="val">{{ case.get('merchant') or 'Merchant' }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">Order ID: </td>
+                <td class="val">{{ case.get('order_id', '') or 'N/A' }}</td>
+                <td class="lbl">Case / ARN: </td>
+                <td class="val">{{ case.get('acquirer_ref', '') or 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">Transaction ID: </td>
+                <td class="val">{{ case.get('payment_psp_ref', case.get('dispute_psp_ref', '')) or 'N/A' }}</td>
+                <td class="lbl">Reason Code: </td>
+                <td class="val">{{ case.reason_code }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">{{ case.payment_method }} Amount: </td>
+                <td class="val">{{ "%.2f"|format(case.amount) }} {{ case.get('currency', 'USD') }}</td>
+                <td class="lbl">Response Date: </td>
+                <td class="val">{{ case.get('dispute_creation_date', '') or 'N/A' }}</td>
+            </tr>
+        </table>
+
+        {# ── Salutation + Body ── #}
+        <div style="margin-bottom:16px;">
+            <textarea class="ce-textarea" rows="17">Dear {{ case.payment_method }} Processing Team,
+
+{{ case.get('merchant') or 'Merchant' }} specializes in selling e-commerce marketplace services. All our programs are sold online using our secure website. On {{ case.get('dispute_creation_date', '') or 'N/A' }}, we received a {{ (case.payment_method or 'Visa')|lower }} under RC {{ case.reason_code }} in the amount of {{ "%.2f"|format(case.amount) }} {{ case.get('currency', 'USD') }}.
+
+We strongly believe the {{ (case.payment_method or 'Visa')|lower }} filed by the Cardholder for the above case number is not valid because the compelling evidence attached with this letter shows that the transaction is valid, and the Cardholder is well aware of the transaction and its terms prior to purchase.
+
+{{ case.get('reason_description', '') or case.get('scenario', '') }}. Our records show order {{ case.get('order_id', '') or 'N/A' }} placed on {{ case.get('transaction_date', '') or 'N/A' }}.
+
+Below are the Cardholder's details recorded in our system:
+
+{{ case.payment_method }} Cardholder Name: {{ case.get('cardholder', '') or 'N/A' }}
+Email Address: {{ case.get('cardholder_email', '') or 'N/A' }}
+Phone Number: {{ case.get('cardholder_phone', '') or 'N/A' }}</textarea>
+        </div>
+
+        {# ── Evidence List (highlighted) ── #}
+        <div class="ce-evidence-list">
+            <p style="margin:0 0 6px;">The compelling evidence listed below are provided as per {{ case.payment_method }}'s Compelling Evidence Mandate Policy Revision:</p>
+            <ol>
+                <li>Transaction Copy with an AVS code of ({{ case.get('avs_response', 'N/A')[:3] }}), CVV captured as ({{ case.get('cvv_response', 'N/A')[:3] }}) &amp; Authorization code {{ case.get('auth_code', 'N/A') }}</li>
+                <li>Order Confirmation</li>
+                <li>Invoice Breakup</li>
+                <li>Refund Information</li>
+                <li>{{ case.payment_method }} Cardholder Registration and Order History</li>
+                <li>{{ case.payment_method }} Cardholder Activity Log</li>
+                <li>Attachment showing that the Cardholder is aware of Checkout Terms prior to purchase</li>
+                <li>Attachment showing that the Cardholder is aware of Terms &amp; Conditions prior to purchase</li>
+                <li>Refund Policy in force at the time of purchase</li>
+            </ol>
+        </div>
+
+        {# ── 1. Transaction Copy (manual) ── #}
+        <div class="ce-section-title">Transaction Copy:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="3">The Cardholder placed an online order on our website for purchasing our program in the amount of {{ "%.2f"|format(case.get('amount_authorized', case.amount)) }} {{ case.get('currency', 'USD') }} on {{ case.get('transaction_date', '') or 'N/A' }} with authorization code {{ case.get('auth_code', 'N/A') }} pertaining to transaction ID {{ case.get('payment_psp_ref', '') or 'N/A' }}. Accurate credit card, name: {{ case.get('cardholder', '') or 'N/A' }}, and valid billing information was provided at the time of the purchase, all of which proves the Cardholder willingly engaged in the transaction.
+
+The attached transaction copy shows AVS as {{ case.get('avs_response', 'N/A') }}, CVV as {{ case.get('cvv_response', 'N/A') }} and 3D Secure as {{ case.get('threed_secure', 'N/A') }}. This copy was taken from the Payment Gateway.</textarea>
+        </div>
+        {{ section('transaction_copy') }}
+
+        {# ── 2. Order Confirmation (system: Order Information) ── #}
+        <div class="ce-section-title">Order Confirmation:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The copy of order confirmation for Order ID: {{ case.get('order_id', '') or 'N/A' }} is provided below that outlines the program purchased, the delivery record and the billing address.</textarea>
+        </div>
+        {{ section('order_information') }}
+
+        {# ── 3. Invoice Breakup (system) ── #}
+        <div class="ce-section-title">Invoice Breakup:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The invoice below itemises what the Cardholder was billed and reconciles the invoice total against the amount captured and the amount now disputed.</textarea>
+        </div>
+        {{ section('invoice_breakup') }}
+
+        {# ── 4. Refund Information (system) ── #}
+        <div class="ce-section-title">Refund Information:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">Our refund record for this order is set out below, showing what was returned to the Cardholder, when, and by which method, against the original payment.</textarea>
+        </div>
+        {{ section('refund_information') }}
+
+        {# ── Page break / Header table repeated ── #}
+        <table class="ce-info-table" style="margin-top:30px;">
+            <tr>
+                <td class="lbl">Merchant Number: </td>
+                <td class="val">{{ case.get('acquirer_code', '') or case.get('merchant_account', '') or 'N/A' }}</td>
+                <td class="lbl">DBA Name: </td>
+                <td class="val">{{ case.get('merchant') or 'Merchant' }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">Order ID: </td>
+                <td class="val">{{ case.get('order_id', '') or 'N/A' }}</td>
+                <td class="lbl">Case / ARN: </td>
+                <td class="val">{{ case.get('acquirer_ref', '') or 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">Transaction ID: </td>
+                <td class="val">{{ case.get('payment_psp_ref', case.get('dispute_psp_ref', '')) or 'N/A' }}</td>
+                <td class="lbl">Reason Code: </td>
+                <td class="val">{{ case.reason_code }}</td>
+            </tr>
+            <tr>
+                <td class="lbl">{{ case.payment_method }} Amount: </td>
+                <td class="val">{{ "%.2f"|format(case.amount) }} {{ case.get('currency', 'USD') }}</td>
+                <td class="lbl">Response Date: </td>
+                <td class="val">{{ case.get('dispute_creation_date', '') or 'N/A' }}</td>
+            </tr>
+        </table>
+
+        {# ── 5. Registration and Order History (system: Account History) ── #}
+        <div class="ce-section-title">{{ case.payment_method }} Cardholder Registration and Order History:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The Cardholder holds a registered account with us. Their registration details, purchase history and prior dispute record are set out below.</textarea>
+        </div>
+        {{ section('account_history') }}
+
+        {# ── 6. Activity Log (manual) ── #}
+        <div class="ce-section-title">{{ case.payment_method }} Cardholder Activity Log:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The Cardholder has logged into our membership portal at various times and the detailed activity log history with date and time stamp is attached which proves that the Cardholder has used our service.</textarea>
+        </div>
+        {{ section('activity_log') }}
+
+        {# ── 7. Checkout Page (manual) ── #}
+        <div class="ce-section-title">Checkout Page:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The Cardholder has also agreed at the time of purchase to all our terms clearly outlined in our website.</textarea>
+        </div>
+        {{ section('checkout_record') }}
+
+        {# ── 8. Terms & Conditions (system) ── #}
+        <div class="ce-section-title">Terms &amp; Conditions:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The Cardholder accepted the terms below at the time of purchase. They are reproduced in full as they stood on the order date.</textarea>
+        </div>
+        {{ section('terms_conditions') }}
+
+        {# ── 9. Refund Policy (system) ── #}
+        <div class="ce-section-title">Refund Policy:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="2">The Cardholder has also agreed at the time of purchase to all the refund and cancellation policies clearly outlined in our website, reproduced below with a note on how they were applied to this order.</textarea>
+        </div>
+        {{ section('refund_policy') }}
+
+        {# ── Attachments List ── #}
+        <div style="margin:20px 0 16px; font-size:13px; font-weight:700; color:#2e1f17;">Attachments:</div>
+        <ol style="font-size:13px; color:#6b584c; margin:0 0 20px 20px; line-height:1.8;">
+            <li>Transaction Copy</li>
+            <li>Order Information</li>
+            <li>Invoice Breakup</li>
+            <li>Refund Information</li>
+            <li>Account History ({{ case.payment_method }} Cardholder Registration and Order History)</li>
+            <li>{{ case.payment_method }} Cardholder Activity Log</li>
+            <li>Checkout Page</li>
+            <li>Terms and Conditions</li>
+            <li>Refund Policy</li>
+        </ol>
+
+        {# ── Evidence by Category (Primary / Secondary) ── #}
+        {% if ev.evidence %}
+        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #f7efe9;">
+            <div style="font-size:15px; font-weight:800; color:#2e1f17; margin-bottom:4px;">Evidence Categorization &mdash; {{ ev.title }}</div>
+            <p style="font-size:12px; color:#9c8578; margin-bottom:16px;">Based on reason code, evidence is categorized into primary (required to win) and secondary (supporting). Items the system already holds are marked as fetched; the rest need an upload.</p>
+
+            {# Primary Evidence #}
+            <div style="font-size:13px; font-weight:800; color:#c62828; margin-bottom:10px; text-transform:uppercase;">Primary Evidence (Required)</div>
+            {% for item in evidence_items if item.critical %}
+            <div style="background:#fce4ec; border-radius:6px; padding:12px 14px; margin-bottom:8px; border-left:4px solid #c62828;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                    <div>
+                        <span style="font-size:13px; font-weight:700; color:#c62828;">{{ item.name }}</span>
+                        <div style="font-size:11px; color:#9c8578; margin-top:2px;">{{ ev.databases[item.db].name }}</div>
+                    </div>
+                    <span style="font-size:10px; font-weight:700; color:#fff; background:#c62828; padding:2px 10px; border-radius:3px;">PRIMARY</span>
+                </div>
+                {% if item.source == 'system' %}
+                <div style="margin-top:8px; font-size:11.5px; font-weight:700; color:#2e7d32;">
+                    &#10003; Fetched from system &mdash; shown above under {{ documents[item.doc_key].title }}
+                </div>
+                {% elif tier == 'fully_automated' %}
+                <div style="margin-top:8px; font-size:11.5px; color:#9c8578;">
+                    No system source for this item &mdash; not included in the automated packet.
+                </div>
+                {{ uploaded_files(item.name) }}
+                {% else %}
+                {{ upload_box(item.name) }}
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            {# Secondary Evidence #}
+            <div style="font-size:13px; font-weight:800; color:#6b584c; margin:20px 0 10px; text-transform:uppercase;">Secondary Evidence (Supporting)</div>
+            {% for item in evidence_items if not item.critical %}
+            <div style="background:#fcf6f1; border-radius:6px; padding:12px 14px; margin-bottom:6px; border-left:3px solid #d0bcae;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                    <div>
+                        <span style="font-size:12px; font-weight:600; color:#2e1f17;">{{ item.name }}</span>
+                        <div style="font-size:11px; color:#b0998a; margin-top:2px;">{{ ev.databases[item.db].name }}</div>
+                    </div>
+                    <span style="font-size:10px; font-weight:600; color:#9c8578; background:#f7efe9; padding:2px 8px; border-radius:3px;">SECONDARY</span>
+                </div>
+                {% if item.source == 'system' %}
+                <div style="margin-top:8px; font-size:11.5px; font-weight:700; color:#2e7d32;">
+                    &#10003; Fetched from system &mdash; shown above under {{ documents[item.doc_key].title }}
+                </div>
+                {% elif tier == 'fully_automated' %}
+                <div style="margin-top:8px; font-size:11.5px; color:#9c8578;">
+                    No system source for this item &mdash; not included in the automated packet.
+                </div>
+                {{ uploaded_files(item.name) }}
+                {% else %}
+                {{ upload_box(item.name) }}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if other_uploads %}
+        <div class="ce-section-title">Other Attachments:</div>
+        {% for up in other_uploads %}
+        <div class="ce-uploaded-file">
+            <div class="ce-file-row">
+                <span>&#128196;</span>
+                <a href="{{ up.url }}">{{ up.filename }}</a>
+                <span class="meta">{{ up.size_kb }} KB &middot; {{ up.uploaded_at }}</span>
+                <form method="post" action="{{ up.delete_url }}" style="display:inline;">
+                    <button type="submit" class="ce-del" title="Remove">&times;</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {# ── Conclusion ── #}
+        <div class="ce-section-title" style="color:#c62828;">Conclusion:</div>
+        <div style="margin-bottom:8px;">
+            <textarea class="ce-textarea" rows="3">All charges are accurate. The above evidence supports that the Cardholder willingly engaged in the transaction and received what was purchased, therefore we are asking for your consideration to reverse this {{ (case.payment_method or 'Visa')|lower }} in our favor.</textarea>
+        </div>
+
+        {# ── Bottom bar ── #}
+        <div class="ce-bottom">
+            <button class="ce-btn ce-btn-cancel" onclick="window.location.href='{{ url_for('chargeback_detail', case_id=case.case_id) }}'">Cancel</button>
+            <button class="ce-btn ce-btn-download" onclick="downloadEvidence()">Download Evidence</button>
+            <button class="ce-btn ce-btn-submit" onclick="submitEvidence()">Submit Evidence</button>
+        </div>
+    </div>
+
+    {# ── Sidebar ── #}
+    <div>
+        <div class="ce-sidebar">
+            <div class="ce-sidebar-title">Winning Ratio</div>
+            <div class="ce-sidebar-bar"></div>
+            {% set colour = '#2e7d32' if ratio.winning_ratio >= 80 else ('#e65100' if ratio.winning_ratio >= 50 else '#c62828') %}
+            <div style="text-align:center; margin:12px 0;">
+                <div style="font-size:44px; font-weight:900; color:{{ colour }};">{{ ratio.winning_ratio }}%</div>
+                <div style="font-size:11.5px; color:#9c8578; margin-top:4px; line-height:1.4;">{{ ratio.assessment }}</div>
+            </div>
+            <div style="background:#f7efe9; border-radius:4px; height:8px; overflow:hidden; margin-bottom:12px;">
+                <div style="height:100%; width:{{ ratio.winning_ratio }}%; border-radius:4px; background:{{ colour }};"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:#9c8578; margin-bottom:14px;">
+                <span>Primary: <strong>{{ ratio.primary_available }}/{{ ratio.primary_total }}</strong></span>
+                <span>Secondary: <strong>{{ ratio.secondary_available }}/{{ ratio.secondary_total }}</strong></span>
+            </div>
+
+            <div class="ce-sidebar-title" style="font-size:12px;">Evidence Checklist</div>
+            <ul class="ce-sidebar-list" style="margin-top:8px;">
+                {% for item in evidence_items %}
+                <li>
+                    <span class="{{ 'have' if item.available else 'miss' }}">{{ '&#10003;'|safe if item.available else '&#9675;'|safe }}</span>
+                    <span>
+                        {{ item.name }}
+                        {% if item.critical %}<strong style="color:#c62828;">*</strong>{% endif %}
+                        <span style="color:#b0998a;">({{ item.source }})</span>
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+            <div style="font-size:10.5px; color:#b0998a; margin-top:10px; line-height:1.5;">
+                <strong style="color:#c62828;">*</strong> primary evidence &mdash; 70% of the score.
+                Secondary evidence carries the remaining 30%.
+            </div>
+        </div>
+
+        <div class="ce-sidebar" style="margin-top:14px; position:static;">
+            <div class="ce-sidebar-title">Evidence Completion</div>
+            <div class="ce-sidebar-bar"></div>
+            <div class="ce-sidebar-desc">{{ tier_blurb }}</div>
+            <ul class="ce-sidebar-list">
+                <li>Primary evidence = 70% of score</li>
+                <li>Secondary evidence = 30% of score</li>
+                <li>All primary present = 100% possible</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{# Success Modal #}
+<div class="ce-modal-overlay" id="submit-modal">
+    <div class="ce-modal">
+        <div style="font-size:48px; margin-bottom:12px;">&#9989;</div>
+        <h3 style="margin:0 0 8px; font-size:18px; color:#2e1f17;">Evidence Submitted</h3>
+        <p style="font-size:13px; color:#9c8578; margin-bottom:20px;">Counter evidence for case {{ case.case_id }} has been submitted to the processor.</p>
+        <button class="ce-btn ce-btn-submit" onclick="window.location.href='{{ url_for('chargeback_detail', case_id=case.case_id) }}'">Close</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// The file input is hidden inside the dashed area; reveal the submit button and
+// show the chosen filename once something is picked.
+document.querySelectorAll('.ce-upload-form input[type=file]').forEach(function (input) {
+    input.addEventListener('change', function () {
+        var form = input.closest('.ce-upload-form');
+        var label = form.querySelector('.ce-upload-text');
+        if (input.files && input.files[0]) {
+            form.classList.add('picked');
+            label.textContent = input.files[0].name;
+        } else {
+            form.classList.remove('picked');
+            label.textContent = 'Paste or upload file';
+        }
+    });
+});
+
+// Textareas do not survive window.print(), so mirror their text into plain
+// divs that the print stylesheet reveals.
+function downloadEvidence() {
+    document.querySelectorAll('.ce-print-text').forEach(function (el) { el.remove(); });
+    document.querySelectorAll('.ce-textarea').forEach(function (ta) {
+        var div = document.createElement('div');
+        div.className = 'ce-print-text';
+        div.textContent = ta.value;
+        ta.parentNode.insertBefore(div, ta.nextSibling);
+    });
+    setTimeout(function () { window.print(); }, 100);
+}
+
+function submitEvidence() {
+    document.getElementById('submit-modal').classList.add('open');
+}
+</script>
+{% endblock %}
